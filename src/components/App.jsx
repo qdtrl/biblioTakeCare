@@ -1,20 +1,14 @@
 import React from 'react';
 import ReactLoading from 'react-loading';
-
-import DisplayBook from './books/DisplayBook';
-import DisplayCategorie from './categories/DisplayCategorie';
+import SearchBar from './search_bar/';
+import DisplayBook from './book/';
 
 const App = () => {
   const [books, setBooks] = React.useState(null);
-  const [booksDisplay, setBooksDisplay] = React.useState(null);
-  const [search, setSearch] = React.useState(null);
   const [categories, setCategories] = React.useState(null);
-  const [favorites, setFavorites] = React.useState(null);
-
-  const handleFav = (id) => {
-    setFavorites([...favorites, id]);
-  };
-
+  const [booksDisplay, setBooksDisplay] = React.useState(null);
+  const [read, setRead] = React.useState([]);
+  const [favorites, setFavorites] = React.useState([]);
 
   const getBooks = () => {
     fetch('https://gist.githubusercontent.com/MathisDYKDan/76bc73ec77481ccb82677cc7c0d8b524/raw/a23c99027b9bfc1bfdb22e22ddcb4301a5f870ee/books.json')
@@ -49,65 +43,40 @@ const App = () => {
         setBooksDisplay(books);
       }
     };
-  }, [books]);
-
-  const updateDisplayBySearch = (event) => {
-    const searchBarValue = event.target.value.toLowerCase();
-    if (searchBarValue === "") {
-      setBooksDisplay(books);
-    } else {
-      
-      const regeX = RegExp(`${searchBarValue}.`)
-      const booksSearch = books.reduce(
-        (acc, book) => { 
-        if(-1 !== (book.title.toLowerCase().search(regeX))) {
-          acc.push(book);
-          console.log(acc);
-        };
-        return acc;
-      }, []);
-      console.log(booksSearch);
-      setBooksDisplay(booksSearch);
-    }
-  };
-
-  const updateDisplayByCategories = (event) => {
-    const cat = event.target.value;
-    if (cat === "All Categories") {
-      setBooksDisplay(books);
-    } else {
-      const booksCat = [];
-      books.forEach((book) => {       
-        if(book.categories.includes(cat)) {
-          booksCat.push(book);
-        }
-      });
-      setBooksDisplay(booksCat);
-    }
-  };
+  },[books]);
 
   return (
     <>
-      <h1>Bienvenue sur BiblioTakeCare</h1>
-      <nav>
-        {(booksDisplay) &&
-        <div className="searchBar">
-          <p>Recherche par titre</p> 
-          <input type="text" onChange={updateDisplayBySearch}/>
-        </div> }
-        {(categories) && 
-        <form >
-          <DisplayCategorie categories={categories} onChange={updateDisplayByCategories} key={Math.random()}/>
-        </form>}
-      </nav>
-      
-      {((booksDisplay) &&
-      <section>
-        { booksDisplay.map((book, index) => (
-          <DisplayBook book={book} key={index.toString()}/>
-        ))}
-      </section>)
-     || <div className="load"><ReactLoading type={'spokes'} color={'orange'} height={'60px'} width={'60px'} /><p>Chargement...</p></div>}
+      <h1>Bienvenue sur <span>BiblioTakeCare</span></h1>
+      {
+        categories &&
+        <SearchBar
+          books={books}
+          categories={categories}
+          read={read}
+          favorites={favorites}
+          setBooksDisplay={setBooksDisplay}
+        /> ||
+        <div className="load">
+          <ReactLoading type={'spokes'} color={'orange'} height={'60px'} width={'60px'} />
+          <p>Chargement...</p>
+        </div>
+      }
+      {
+        booksDisplay &&
+        <ul>
+          { booksDisplay.map((book, index) => (
+            <DisplayBook 
+              book={book}
+              favorites={favorites}
+              setFavorites={setFavorites}
+              read={read}
+              setRead={setRead}
+              key={index.toString()}
+            />
+          ))}
+        </ul>
+      }
     </>
   )
 };

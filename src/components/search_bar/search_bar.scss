@@ -1,0 +1,25 @@
+nav.searchBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem;
+  p {
+    margin: 2rem;
+  }
+  input{
+    margin-right: 4rem;
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid $secondary-color;
+    width: 30vw;
+    background: #f1f1f1;  
+  }
+  select {
+    margin-right: 4rem;
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid $secondary-color;
+    width: 30vw;
+    background: #f1f1f1; 
+  }
+}

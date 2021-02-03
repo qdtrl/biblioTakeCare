@@ -1,6 +1,9 @@
 @import './components/likes/like';
-@import './components/books/book';
+@import './components/read/read';
+@import './components/book/book';
 @import './config';
+@import './components/search_bar/search_bar';
+@import './components/toggle/switch';
 
 * {
   text-align: center;
@@ -15,46 +18,13 @@ body {
 }
 h1 {
   margin: 2rem 0 2rem 0;
-  font-size: 3rem;
+  font-size: 5rem;
+  font-weight: 200;
+  span {
+    color: #f1f1f1;
+  }
 }
 
-nav {
-  display: flex;
-  justify-content: center;
-  margin: 3rem;
-  input{
-    margin-right: 4rem;
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid $secondary-color;
-    width: 30vw;
-    background: #f1f1f1;  
-  }
-  select {
-    margin-right: 4rem;
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid $secondary-color;
-    width: 30vw;
-    background: #f1f1f1; 
-  }
-  form {
-    display: flex;
-    align-items: center;
-    p {
-      margin-right: 1rem;
-      font-size: 1.4rem;
-    }
-  }
-  div.searchBar {
-    display: flex;
-    align-items: center;
-    p {
-      margin-right: 1rem;
-      font-size: 1.4rem;
-    }
-  }
-}
 div.load {
   display: flex;
   justify-content: center;
@@ -64,11 +34,13 @@ div.load {
     margin-left: 1rem;
   }
 }
-section {
+ul {
   width: 90vw;
   margin-left: 5vw;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  list-style-type: none;
 
 
   .card {
