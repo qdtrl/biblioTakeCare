@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/biblioTakeCare/static/css/main.847292ed.chunk.css",
+    "main.js": "/biblioTakeCare/static/js/main.df7edab8.chunk.js",
+    "main.js.map": "/biblioTakeCare/static/js/main.df7edab8.chunk.js.map",
+    "runtime-main.js": "/biblioTakeCare/static/js/runtime-main.138b741a.js",
+    "runtime-main.js.map": "/biblioTakeCare/static/js/runtime-main.138b741a.js.map",
+    "static/js/2.2f6a55ae.chunk.js": "/biblioTakeCare/static/js/2.2f6a55ae.chunk.js",
+    "static/js/2.2f6a55ae.chunk.js.map": "/biblioTakeCare/static/js/2.2f6a55ae.chunk.js.map",
+    "index.html": "/biblioTakeCare/index.html",
+    "static/css/main.847292ed.chunk.css.map": "/biblioTakeCare/static/css/main.847292ed.chunk.css.map",
+    "static/js/2.2f6a55ae.chunk.js.LICENSE.txt": "/biblioTakeCare/static/js/2.2f6a55ae.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/biblioTakeCare/static/media/like.ade2af76.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.138b741a.js",
+    "static/js/2.2f6a55ae.chunk.js",
+    "static/css/main.847292ed.chunk.css",
+    "static/js/main.df7edab8.chunk.js"
+  ]
+}
